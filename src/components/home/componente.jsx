@@ -22,7 +22,15 @@ function TablaExpedientes() {
   const toggleExpediente = (id) => {
     setExpedienteAbierto(expedienteAbierto === id ? null : id);
   };
+const expedientesOrdenados = [...expedientes].sort((a, b) => {
+  const prioridad = (exp) => {
+    if (exp.ultimomovimiento === "SUBSEC. DE SISTEMAS DE INFORMACION") return 0;
+    if (exp.ultimomovimiento === "ARCHIVO (INTERFILE S.A.)") return 2;
+    return 1;
+  };
 
+  return prioridad(a) - prioridad(b);
+});
   return (
     <div className="tabla-container">
       <h2>Listado de Expedientes</h2>
@@ -30,7 +38,7 @@ function TablaExpedientes() {
       <table className="tabla-expedientes">
         <thead>
           <tr>
-            <th></th>
+            <th>Iniciador</th>
             <th>Año</th>
             <th>Letra</th>
             <th>Número</th>
@@ -40,35 +48,56 @@ function TablaExpedientes() {
         </thead>
 
         <tbody>
-          {expedientes.map((exp) => (
+          {expedientesOrdenados.map((exp) => (
             <>
-    <tr
+   <tr
   key={exp.id}
   onClick={() => toggleExpediente(exp.id)}
   style={{
     cursor: "pointer",
+
     backgroundColor:
       exp.ultimomovimiento === "SUBSEC. DE SISTEMAS DE INFORMACION"
         ? "#ffdddd"
         : exp.ultimomovimiento === "ARCHIVO (INTERFILE S.A.)"
         ? "#dbeafe"
         : "",
+
     color:
-      exp.ultimomovimiento === "SUBSEC. DE SISTEMAS DE INFORMACION"
+      exp.iniciador === "SUBSEC. DE SISTEMAS DE INFORMACION"
+        ? "#2563eb"
+        : exp.ultimomovimiento === "SUBSEC. DE SISTEMAS DE INFORMACION"
         ? "#b00000"
         : exp.ultimomovimiento === "ARCHIVO (INTERFILE S.A.)"
         ? "#1d4ed8"
         : "",
+
     fontWeight:
+      exp.iniciador === "SUBSEC. DE SISTEMAS DE INFORMACION" ||
       exp.ultimomovimiento === "SUBSEC. DE SISTEMAS DE INFORMACION" ||
       exp.ultimomovimiento === "ARCHIVO (INTERFILE S.A.)"
         ? "bold"
         : "normal"
   }}
 >
-                <td>
-                  {expedienteAbierto === exp.id ? "▼" : "▶"}
-                </td>
+             
+             
+              <td
+  style={{
+    color:
+      exp.iniciador === "SUBSECRETARIA DE SISTEMAS DE INFORMACION" ||
+      exp.iniciador === "SUBSEC. DE SISTEMAS DE INFORMACION"
+        ? "#2563eb"
+        : "inherit",
+    fontWeight:
+      exp.iniciador === "SUBSECRETARIA DE SISTEMAS DE INFORMACION" ||
+      exp.iniciador === "SUBSEC. DE SISTEMAS DE INFORMACION"
+        ? "bold"
+        : "normal",
+  }}
+>
+  {exp.iniciador}
+</td>
                 <td>{exp.anio}</td>
                 <td>{exp.letra}</td>
                 <td>{exp.numero}</td>

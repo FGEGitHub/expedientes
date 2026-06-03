@@ -42,17 +42,28 @@ function TablaExpedientes() {
         <tbody>
           {expedientes.map((exp) => (
             <>
-          <tr
+    <tr
   key={exp.id}
-  className="fila-expediente"
   onClick={() => toggleExpediente(exp.id)}
   style={{
     cursor: "pointer",
     backgroundColor:
-      exp.ultimomovimiento ===
-      "SUBSEC. DE SISTEMAS DE INFORMACION"
+      exp.ultimomovimiento === "SUBSEC. DE SISTEMAS DE INFORMACION"
         ? "#ffdddd"
-        : ""
+        : exp.ultimomovimiento === "ARCHIVO (INTERFILE S.A.)"
+        ? "#dbeafe"
+        : "",
+    color:
+      exp.ultimomovimiento === "SUBSEC. DE SISTEMAS DE INFORMACION"
+        ? "#b00000"
+        : exp.ultimomovimiento === "ARCHIVO (INTERFILE S.A.)"
+        ? "#1d4ed8"
+        : "",
+    fontWeight:
+      exp.ultimomovimiento === "SUBSEC. DE SISTEMAS DE INFORMACION" ||
+      exp.ultimomovimiento === "ARCHIVO (INTERFILE S.A.)"
+        ? "bold"
+        : "normal"
   }}
 >
                 <td>

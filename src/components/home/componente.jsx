@@ -5,14 +5,14 @@ import servicioex from "../../services/servicio";
 function TablaExpedientes() {
   const [expedientes, setExpedientes] = useState([]);
   const [expedienteAbierto, setExpedienteAbierto] = useState(null);
-
+    
   useEffect(() => {
     cargarExpedientes();
   }, []);
-
+    
   const cargarExpedientes = async () => {
     try {
-      const respuesta = await servicioex.traerexpedientes();
+      const respuesta = await servicioex.traerexpedientes();    
       setExpedientes(respuesta);
     } catch (error) {
       console.error("Error al obtener expedientes:", error);
@@ -45,6 +45,7 @@ const expedientesOrdenados = [...expedientes].sort((a, b) => {
             <th>Lugar</th>
    <th>Dias </th>
           </tr>
+          
         </thead>
 
         <tbody>

@@ -105,6 +105,16 @@ const expedientesOrdenados = [...expedientes].sort((a, b) => {
                 <td>{exp.numero}</td>
                 <td>{exp.ultimomovimiento}</td>
                     <td>{exp.dias}</td>
+                                             <td
+  style={{
+    textAlign: "center",
+    fontSize: "18px",
+    width: "40px",
+    fontWeight: "bold"
+  }}
+>
+  {expedienteAbierto === exp.id ? "▼" : "▶"}
+</td>
                 
               </tr>
 

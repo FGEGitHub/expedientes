@@ -42,12 +42,19 @@ function TablaExpedientes() {
         <tbody>
           {expedientes.map((exp) => (
             <>
-              <tr
-                key={exp.id}
-                className="fila-expediente"
-                onClick={() => toggleExpediente(exp.id)}
-                style={{ cursor: "pointer" }}
-              >
+          <tr
+  key={exp.id}
+  className="fila-expediente"
+  onClick={() => toggleExpediente(exp.id)}
+  style={{
+    cursor: "pointer",
+    backgroundColor:
+      exp.ultimomovimiento ===
+      "SUBSEC. DE SISTEMAS DE INFORMACION"
+        ? "#ffdddd"
+        : ""
+  }}
+>
                 <td>
                   {expedienteAbierto === exp.id ? "▼" : "▶"}
                 </td>

@@ -34,7 +34,8 @@ function TablaExpedientes() {
             <th>Año</th>
             <th>Letra</th>
             <th>Número</th>
-            <th>titulo</th>
+            <th>Lugar</th>
+
           </tr>
         </thead>
 
@@ -53,7 +54,8 @@ function TablaExpedientes() {
                 <td>{exp.anio}</td>
                 <td>{exp.letra}</td>
                 <td>{exp.numero}</td>
-                <td>{exp.titulo}</td>
+                <td>{exp.ultimomovimiento}</td>
+                
               </tr>
 
               {expedienteAbierto === exp.id && (

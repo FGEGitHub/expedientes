@@ -1,0 +1,34 @@
+.tabla-container {
+  width: 90%;
+  margin: 30px auto;
+  font-family: Arial, sans-serif;
+}
+
+.tabla-container h2 {
+  margin-bottom: 15px;
+}
+
+.tabla-expedientes {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-expedientes th,
+.tabla-expedientes td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.tabla-expedientes th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.tabla-expedientes tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.tabla-expedientes tr:hover {
+  background-color: #f0f0f0;
+}

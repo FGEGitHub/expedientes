@@ -35,7 +35,7 @@ function TablaExpedientes() {
             <th>Letra</th>
             <th>Número</th>
             <th>Lugar</th>
-
+   <th>Dias </th>
           </tr>
         </thead>
 
@@ -55,6 +55,7 @@ function TablaExpedientes() {
                 <td>{exp.letra}</td>
                 <td>{exp.numero}</td>
                 <td>{exp.ultimomovimiento}</td>
+                    <td>{exp.dias}</td>
                 
               </tr>
 
@@ -68,6 +69,7 @@ function TablaExpedientes() {
                             <th>Origen</th>
                             <th>Destino</th>
                             <th>Fecha</th>
+                                 <th>dias</th>
                           </tr>
                         </thead>
 
@@ -77,9 +79,8 @@ function TablaExpedientes() {
                               <tr key={mov.id}>
                                 <td>{mov.origen}</td>
                                 <td>{mov.destino}</td>
-                                <td>
-                                  {new Date(mov.fecha).toLocaleDateString()}
-                                </td>
+                           <td>{mov.fecha}</td>
+                                 <td>{mov.dias}</td>
                               </tr>
                             ))
                           ) : (

@@ -100,6 +100,7 @@ const expedientesOrdenados = [...expedientes].sort((a, b) => {
 >
   {exp.iniciador}
 </td>
+  <td>{exp.extracto}</td>
                 <td>{exp.anio}</td>
                 <td>{exp.letra}</td>
                 <td>{exp.numero}</td>

@@ -39,6 +39,7 @@ const expedientesOrdenados = [...expedientes].sort((a, b) => {
         <thead>
           <tr>
             <th>Iniciador</th>
+              <th>Extracto</th>
             <th>Año</th>
             <th>Letra</th>
             <th>Número</th>

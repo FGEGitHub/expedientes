@@ -139,6 +139,24 @@ const expedientesSistemas = expedientes.filter(
       ))}
     </div>
   )}
+
+  <div
+  style={{
+    background: "#eef6ff",
+    border: "1px solid #cfe2ff",
+    color: "#0c5460",
+    padding: "10px 15px",
+    borderRadius: "8px",
+    marginBottom: "15px",
+    fontSize: "14px",
+  }}
+>
+  <strong>Nota:</strong> Los expedientes se encuentran ordenados
+  priorizando aquellos cuyo último movimiento está en
+  <strong> SUBSEC. DE SISTEMAS DE INFORMACIÓN</strong>. Dentro de cada
+  grupo, se muestran primero los que poseen el movimiento más reciente
+  según la fecha registrada en el sistema.
+</div>
 </div>
       <table className="tabla-expedientes">
         <thead>

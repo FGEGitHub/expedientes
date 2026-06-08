@@ -27,12 +27,39 @@ const [mostrarSistemas, setMostrarSistemas] =
   };
 const expedientesOrdenados = [...expedientes].sort((a, b) => {
   const prioridad = (exp) => {
-    if (exp.ultimomovimiento === "SUBSEC. DE SISTEMAS DE INFORMACION") return 0;
-    if (exp.ultimomovimiento === "ARCHIVO (INTERFILE S.A.)") return 2;
+    if (
+      exp.ultimomovimiento ===
+      "SUBSEC. DE SISTEMAS DE INFORMACION"
+    )
+      return 0;
+
+    if (
+      exp.ultimomovimiento ===
+      "ARCHIVO (INTERFILE S.A.)"
+    )
+      return 2;
+
     return 1;
   };
 
-  return prioridad(a) - prioridad(b);
+  const prioridadA = prioridad(a);
+  const prioridadB = prioridad(b);
+
+  // Primero agrupamos por prioridad
+  if (prioridadA !== prioridadB) {
+    return prioridadA - prioridadB;
+  }
+
+  // Dentro del grupo ordenamos por fecha_sistema
+  const fechaA = a.fecha_sistema
+    ? new Date(a.fecha_sistema).getTime()
+    : 0;
+
+  const fechaB = b.fecha_sistema
+    ? new Date(b.fecha_sistema).getTime()
+    : 0;
+
+  return fechaB - fechaA; // más reciente primero
 });
 const expedientesSistemas = expedientes.filter(
   (exp) =>
@@ -209,6 +236,7 @@ const expedientesSistemas = expedientes.filter(
                             <th>Destino</th>
                             <th>Fecha</th>
                                  <th>dias</th>
+                                 <th>fecha act sistema</th>
                           </tr>
                         </thead>
 
@@ -220,6 +248,20 @@ const expedientesSistemas = expedientes.filter(
                                 <td>{mov.destino}</td>
                            <td>{mov.fecha}</td>
                                  <td>{mov.dias}</td>
+                                <td>
+  {mov.fecha_sistema
+    ? new Date(mov.fecha_sistema).toLocaleString(
+        "es-AR",
+        {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+        }
+      )
+    : "-"}
+</td>
                                  <td
   style={{
     textAlign: "center",

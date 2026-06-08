@@ -5,7 +5,10 @@ import servicioex from "../../services/servicio";
 function TablaExpedientes() {
   const [expedientes, setExpedientes] = useState([]);
   const [expedienteAbierto, setExpedienteAbierto] = useState(null);
-    
+
+
+const [mostrarSistemas, setMostrarSistemas] =
+  useState(false);
   useEffect(() => {
     cargarExpedientes();
   }, []);
@@ -31,10 +34,85 @@ const expedientesOrdenados = [...expedientes].sort((a, b) => {
 
   return prioridad(a) - prioridad(b);
 });
+const expedientesSistemas = expedientes.filter(
+  (exp) =>
+    exp.ultimomovimiento ===
+    "SUBSEC. DE SISTEMAS DE INFORMACION"
+);
+
+
   return (
     <div className="tabla-container">
       <h2>Listado de Expedientes</h2>
+<div
+  style={{
+    background: "#fff3cd",
+    border: "1px solid #ffe69c",
+    padding: "15px",
+    borderRadius: "8px",
+    marginBottom: "20px",
+  }}
+>
+  <h3 style={{ margin: 0 }}>
+    Cantidad de expedientes en Sistemas:{" "}
+    {expedientesSistemas.length}
+  </h3>
 
+  <button
+    onClick={() =>
+      setMostrarSistemas(!mostrarSistemas)
+    }
+    style={{
+      marginTop: "10px",
+      padding: "8px 12px",
+      cursor: "pointer",
+    }}
+  >
+    {mostrarSistemas
+      ? "Ocultar expedientes"
+      : "Ver cuáles"}
+  </button>
+
+  {mostrarSistemas && (
+    <div
+      style={{
+        marginTop: "15px",
+        maxHeight: "300px",
+        overflowY: "auto",
+      }}
+    >
+      {expedientesSistemas.map((exp) => (
+        <div
+          key={exp.id}
+          style={{
+            borderBottom: "1px solid #ddd",
+            padding: "10px 0",
+          }}
+        >
+          <div>
+            <strong>Iniciador:</strong>{" "}
+            {exp.iniciador}
+          </div>
+
+          <div>
+            <strong>Extracto:</strong>{" "}
+            {exp.extracto}
+          </div>
+
+          <div>
+            <strong>Expediente:</strong>{" "}
+            {exp.anio}-{exp.letra}-{exp.numero}
+          </div>
+
+          <div>
+            <strong>Días:</strong>{" "}
+            {exp.dias || 0}
+          </div>
+        </div>
+      ))}
+    </div>
+  )}
+</div>
       <table className="tabla-expedientes">
         <thead>
           <tr>

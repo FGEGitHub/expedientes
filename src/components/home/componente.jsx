@@ -253,8 +253,8 @@ const expedientesSistemas = expedientes.filter(
                             <th>Origen</th>
                             <th>Destino</th>
                             <th>Fecha</th>
-                                 <th>dias</th>
-                                 <th>fecha act sistema</th>
+                                 <th>dias (dias sistema nuestro)</th>
+                                 <th>fecha act sistema nuestro</th>
                           </tr>
                         </thead>
 
@@ -265,7 +265,7 @@ const expedientesSistemas = expedientes.filter(
                                 <td>{mov.origen}</td>
                                 <td>{mov.destino}</td>
                            <td>{mov.fecha}</td>
-                                 <td>{mov.dias}</td>
+                                 <td>{mov.dias} ({mov.dias_sistema})</td>
                                 <td>
   {mov.fecha_sistema
     ? new Date(mov.fecha_sistema).toLocaleString(

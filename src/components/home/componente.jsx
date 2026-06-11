@@ -231,9 +231,11 @@ const expedientesSistemas = expedientes.filter(
                 <td>{exp.numero}</td>
                 <td>{exp.ultimomovimiento}</td>
                     <td>{exp.dias}</td>
-                      <td><div>  <strong></strong>{" "}
-  {exp.dias_sistema || 0}
-</div></td>
+                      <td>
+  {exp.movimientos?.length > 0
+    ? exp.movimientos[exp.movimientos.length - 1].dias_sistema || 0
+    : 0}
+</td>
 
                                              <td
   style={{

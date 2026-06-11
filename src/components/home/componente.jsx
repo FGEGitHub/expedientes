@@ -168,6 +168,7 @@ const expedientesSistemas = expedientes.filter(
             <th>Número</th>
             <th>Lugar</th>
    <th>Dias </th>
+    <th>Dias sistema </th>
      <th></th>
           </tr>
 
@@ -230,6 +231,10 @@ const expedientesSistemas = expedientes.filter(
                 <td>{exp.numero}</td>
                 <td>{exp.ultimomovimiento}</td>
                     <td>{exp.dias}</td>
+                      <td><div>  <strong></strong>{" "}
+  {exp.dias_sistema || 0}
+</div></td>
+
                                              <td
   style={{
     textAlign: "center",

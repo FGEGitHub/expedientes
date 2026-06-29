@@ -231,18 +231,10 @@ const expedientesSistemas = expedientes.filter(
                 <td>{exp.numero}</td>
                 <td>{exp.ultimomovimiento}</td>
                     <td>{exp.dias}</td>
-                 <td>
-  {(() => {
-    const ultimoMov =
-      exp.movimientos?.[exp.movimientos.length - 1];
-
-    if (!ultimoMov) return 0;
-
-    return ultimoMov.fecha_sistema ==
-      "2026-06-08 10:32:00"
-      ? `${ultimoMov.dias_sistema} (o más)`
-            : ultimoMov.dias_sistema;
-  })()}
+            <td>
+  {exp.movimientos?.length
+    ? exp.movimientos[0].dias_sistema
+    : 0}
 </td>
 
                                              <td

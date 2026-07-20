@@ -237,6 +237,7 @@ const expedientesSistemas = expedientes.filter(
     : 0}
 </td>
 
+
                                              <td
   style={{
     textAlign: "center",
